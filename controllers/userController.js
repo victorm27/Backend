@@ -33,7 +33,7 @@ exports.createUser = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const newUser = await User.create({ email, password });
+    const newUser = await User.create({ firstName, lastName, email, password });
     res.json(newUser);
   } catch (error) {
     console.error('Error al crear usuario:', error);
@@ -44,12 +44,12 @@ exports.createUser = async (req, res) => {
 // Controlador para actualizar un usuario por su ID
 exports.updateUserById = async (req, res) => {
   const userId = req.params.id;
-  const { email, password } = req.body;
+  const {firstName, lastName, email, password } = req.body;
 
   try {
     const user = await User.findByPk(userId);
     if (user) {
-      await user.update({ email, password });
+      await user.update({ firstName, lastName, email, password });
       res.json(user);
     } else {
       res.status(404).send('Usuario no encontrado');

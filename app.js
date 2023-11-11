@@ -6,7 +6,8 @@ const { Sequelize } = require('sequelize');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-const db = new Sequelize('nombre_de_tu_base_de_datos', 'tu_usuario', 'tu_contraseña', {
+const db = new Sequelize(
+  'nombre_de_tu_base_de_datos', 'tu_usuario', 'tu_contraseña', {
   host: 'localhost',
   dialect: 'mysql',
 });

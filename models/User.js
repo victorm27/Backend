@@ -7,6 +7,14 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true,
     },
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -19,7 +27,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // Puedes agregar más campos según tus necesidades (nombre, apellidos, etc.)
   });
 
   return User;

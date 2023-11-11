@@ -28,35 +28,25 @@ const authController = {
   },
 
   register: async (req, res) => {
-    const { email, password } = req.body;
+    const { firstName, lastName, email, password } = req.body;
 
     try {
-      // Verificar si el usuario ya existe
-      const existingUser = await User.findOne({ where: { email } });
+        // Verificar si el usuario ya existe
+        const existingUser = await User.findOne({ where: { email } });
 
-      if (existingUser) {
-        return res.status(400).json({ message: 'El usuario ya existe' });
-      }
+        if (existingUser) {
+            return res.status(400).json({ message: 'El usuario ya existe' });
+        }
 
-      // Crear el nuevo usuario
-      const newUser = await User.create({ email, password });
+        // Crear el nuevo usuario
+        const newUser = await User.create({ firstName, lastName, email, password });
 
-      // Aquí puedes generar el token JWT para la autenticación
-
-      res.status(201).json({ message: 'Usuario registrado exitosamente' });
+        res.status(201).json({ message: 'Usuario registrado exitosamente' });
     } catch (error) {
-      console.error('Error en el registro:', error);
-      res.status(500).json({ message: 'Error en el servidor' });
+        console.error('Error en el registro:', error);
+        res.status(500).json({ message: 'Error en el servidor' });
     }
-  },
-
-  forgotPassword: async (req, res) => {
-    // Lógica para enviar correo de restablecimiento de contraseña
-    // Puedes utilizar nodemailer u otra librería para enviar correos
-    // Generar token temporal y almacenarlo en la base de datos o en memoria
-
-    res.status(200).json({ message: 'Instrucciones de restablecimiento de contraseña enviadas por correo electrónico' });
-  },
+},
 };
 
 module.exports = authController;
