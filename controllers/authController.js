@@ -26,7 +26,7 @@ const authController = {
   },
   
   register: async (req, res) => {
-    const { firstName, lastName, email, password } = req.body;
+    const { cedula, firstName, lastName, email, phoneNumber, password } = req.body;
 
     try {
       // Verificar si el usuario ya existe
@@ -39,7 +39,7 @@ const authController = {
       // Crear el nuevo usuario
       const saltRounds = 10;
       const hashedPassword = await bcrypt.hash(password, saltRounds);
-      const newUser = await User.create({ firstName, lastName, email, password: hashedPassword });
+      const newUser = await User.create({ cedula, firstName, lastName, email, phoneNumber, password: hashedPassword });
 
       res.status(201).json({ message: 'Usuario registrado exitosamente' });
     } catch (error) {

@@ -4,9 +4,8 @@ const userController = require('../controllers/userController');
 
 // Rutas para gestionar usuarios
 router.get('/', userController.getAllUsers);
-router.get('/:id', userController.getUserById);
-router.post('/', userController.createUser);
-router.put('/:id', userController.updateUserById);
-router.delete('/:id', userController.deleteUserById);
+router.get('/:cedula', userController.getUserByCedula);
+router.put('/:cedula', userController.updateUserByCedula);
+router.delete('/:cedula', userController.deleteUserByCedula);
 
 module.exports = router;
