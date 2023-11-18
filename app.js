@@ -21,10 +21,8 @@ db.once('open', () => {
   console.log('Conexión exitosa a MongoDB');
 });
 
-app.use(cors({
-  origin: 'http://localhost:3000',
-}));
-
+// Middleware
+app.use(cors());
 app.use(bodyParser.json());
 
 
