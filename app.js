@@ -21,6 +21,10 @@ db.once('open', () => {
   console.log('Conexión exitosa a MongoDB');
 });
 
+app.use(cors({
+  origin: 'http://localhost:3000',
+}));
+
 app.use(bodyParser.json());
 
 
@@ -28,8 +32,8 @@ app.use(bodyParser.json());
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 
-app.use('/auth', cors(), authRoutes);
-app.use('/users', cors(), userRoutes);
+app.use('/auth', authRoutes);
+app.use('/users', userRoutes);
 
 // Iniciar el servidor
 app.listen(PORT, () => {
