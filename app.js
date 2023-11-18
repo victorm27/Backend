@@ -8,7 +8,7 @@ const User = require('./models/User');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-mongoose.connect('mongodb://localhost:27017/comedogs', {
+mongoose.connect('mongodb+srv://victormanuel272114:Autonoma123%40@cluster0.vq2he4v.mongodb.net/comedogs-colitas', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
