@@ -21,8 +21,6 @@ db.once('open', () => {
   console.log('Conexión exitosa a MongoDB');
 });
 
-// Middleware
-app.use(cors());
 app.use(bodyParser.json());
 
 
@@ -30,8 +28,8 @@ app.use(bodyParser.json());
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 
-app.use('/auth', authRoutes);
-app.use('/users', userRoutes);
+app.use('/auth', cors(), authRoutes);
+app.use('/users', cors(), userRoutes);
 
 // Iniciar el servidor
 app.listen(PORT, () => {
